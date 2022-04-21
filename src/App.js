@@ -18,8 +18,8 @@ function App() {
         <div className="app">
           <Header />
           <Routes>
-            <Route path="/" element={<Main />} exact />
-            <Route path='/notes/' element={<Navigate to="/" />} />
+            <Route path="/" element={<Navigate to="/notes/" />} />
+            <Route path='/notes/' element={<Main />} />
             <Route path="/about" element={<About />} />
             <Route path="/note/:noteId" element={<Note />} />
           </Routes>

@@ -65,7 +65,7 @@ const Note = () => {
       },
       body: JSON.stringify(note)
     })
-    navigate('/')
+    navigate('/notes/')
   }
 
   let handleSubmit = () => {
@@ -77,19 +77,19 @@ const Note = () => {
       createNote(allNotesUrl)
     }
 
-    navigate('/')
+    navigate('/notes/')
   }
 
 
   return (
     <div className="note">
       <h3 className='save'>
-        <Link to={'/'}>
+        <Link to={'/notes/'}>
           <button onClick={handleSubmit}>Save</button>
         </Link>
       </h3>
       <h3 className='delete'>
-        <Link to={'/'}>
+        <Link to={'/notes/'}>
           <button onClick={deleteNote}>Delete note</button>
         </Link>
       </h3>
