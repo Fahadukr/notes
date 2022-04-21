@@ -2,6 +2,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
+  Navigate
 } from "react-router-dom";
 
 import './App.css';
@@ -17,7 +18,8 @@ function App() {
         <div className="app">
           <Header />
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/" element={<Main />} exact />
+            <Route path='/notes/' element={<Navigate to="/" />} />
             <Route path="/about" element={<About />} />
             <Route path="/note/:noteId" element={<Note />} />
           </Routes>
