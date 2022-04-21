@@ -14,6 +14,7 @@ const Main = () => {
 
         let getNotes = async () => {
             let response = await fetch("https://flask-api-kfe5mkrebq-ey.a.run.app/notes/all")
+
             let data = await response.json()
 
             setNotes(data)

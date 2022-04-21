@@ -44,6 +44,7 @@ const Note = () => {
       },
       body: JSON.stringify({ ...note, 'updated': time_now })
     })
+    window.location.reload(false);
   }
 
 
@@ -55,6 +56,7 @@ const Note = () => {
       },
       body: JSON.stringify({ ...note, 'updated': time_now })
     })
+    window.location.reload(false);
   }
 
   const deleteNote = async () => {
@@ -65,6 +67,7 @@ const Note = () => {
       },
       body: JSON.stringify(note)
     })
+    window.location.reload(false);
     navigate('/notes/')
   }
 
