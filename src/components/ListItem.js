@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 let getTime = (note) => {
     // return new Date(note.updated).toLocaleDateString()
-    return new Date(note.updated).toISOString().slice(0, 19).replace('T', ' ')
+    return note.updated
 }
 
 
@@ -47,4 +47,4 @@ const ListItem = ({ note }) => {
     )
 }
 
-export default ListItem
+export default ListItem;

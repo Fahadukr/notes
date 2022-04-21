@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
 
-
-
 :root {
   --color-main: #f68657;
   --color-text: #383a3f;
@@ -296,13 +294,14 @@ a {
 
 
 .note textarea {
+  top: 10em;
   background-color: var(--color-white);
   border: none;
   align-items: center;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width: 70%;
   height: 50vh;
   margin-top: 20%;
 
@@ -320,8 +319,8 @@ a {
 
 .save button {
   position: absolute;
-  top: 15%;
-  left: 10%;
+  top: 4em;
+  left: 3em;
   border: none;
   outline: none;
   font-weight: 600;
@@ -339,8 +338,8 @@ a {
 
 .delete button {
   position: absolute;
-  top: 15%;
-  right: 10%;
+  top: 4em;
+  right: 2em;
   border: none;
   outline: none;
   font-weight: 600;
@@ -354,4 +353,8 @@ a {
 
 .delete:hover button {
   color: red;
+}
+
+.add-button {
+  bottom: 40em;
 }

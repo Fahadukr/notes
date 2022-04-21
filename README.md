@@ -5,7 +5,6 @@ Main technologies:
 
 react: 18.0.0
 react-router-dom: 6.3.0
-json-server: 0.17.0
 
 Conact me:
 

@@ -4,50 +4,61 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const Note = () => {
 
-  let navigate = useNavigate()
+  const { noteId } = useParams()
 
-  const { id } = useParams()
+  let time_now = new Date(new Date().setHours(new Date().getHours() + 2))
+
+  const noteUrl = `https://flask-api-kfe5mkrebq-ey.a.run.app/notes/${noteId}`
+
+  const allNotesUrl = `https://flask-api-kfe5mkrebq-ey.a.run.app/notes/all`
+
+  let navigate = useNavigate()
 
   let [note, setNote] = useState(null)
 
   useEffect(() => {
 
+    window.scrollTo(0, 0);
+
+    document.body.style.zoom = "130%";
+
+    let noteUrl = `https://flask-api-kfe5mkrebq-ey.a.run.app/notes/${noteId}`
+
     let getNote = async () => {
-      if (id === 'new') return
-      let response = await fetch(`http://127.0.0.1:5000/notes/${id}`)
+      if (noteId === 'new') return
+      let response = await fetch(noteUrl)
       let data = await response.json()
       setNote(data)
     }
 
     getNote()
 
-  }, [id])
+  }, [noteId])
 
   const createNote = async () => {
 
-
-    await fetch(`http://127.0.0.1:5000/notes/`, {
+    await fetch(allNotesUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...note, 'updated': new Date() })
+      body: JSON.stringify({ ...note, 'updated': time_now })
     })
   }
 
 
-  const updateNote = async () => {
-    await fetch(`http://127.0.0.1:5000/notes/${id}/`, {
+  const updateNote = async (noteUrl) => {
+    await fetch(noteUrl, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ ...note, 'updated': new Date() })
+      body: JSON.stringify({ ...note, 'updated': time_now })
     })
   }
 
   const deleteNote = async () => {
-    await fetch(`http://127.0.0.1:5000/notes/${id}/`, {
+    await fetch(noteUrl, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -58,12 +69,12 @@ const Note = () => {
   }
 
   let handleSubmit = () => {
-    if (id !== "new" && !note.body) {
-      deleteNote()
-    } else if (id !== "new") {
-      updateNote()
-    } else if (id === 'new' && note !== null) {
-      createNote()
+    if (noteId !== "new" && !note.body) {
+      deleteNote(noteUrl)
+    } else if (noteId !== "new") {
+      updateNote(noteUrl)
+    } else if (noteId === 'new' && note !== null) {
+      createNote(allNotesUrl)
     }
 
     navigate('/')
